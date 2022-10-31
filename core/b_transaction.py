@@ -1,4 +1,4 @@
-
+import json
 
 class Transaction:
     """
@@ -12,5 +12,12 @@ class Transaction:
         self.receiver = receiver
         self.amount = amount
 
+    def __repr__(self):
+        return f"sender: {self.sender}, receiver: {self.receiver}, amount: {self.amount}"
+
     def create_transaction(self, sender, receiver, amount):
         self.__init__(sender, receiver, amount)
+
+    @property
+    def toJson(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
