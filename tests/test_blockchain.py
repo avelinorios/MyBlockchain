@@ -38,6 +38,13 @@ class TestBlockchain(unittest.TestCase):
         self.assertEqual(len(self.blockchain_to_test.blocks), 2)
         self.assertEqual(self.blockchain_to_test.difficulty, 2)
 
+    def test_mine_with_1_transaction(self):
+        del self.blockchain_to_test.transaction_pool[:3]
+        self.blockchain_to_test.mine()
+        self.assertEqual(len(self.blockchain_to_test.transaction_pool), 0)
+        self.assertEqual(len(self.blockchain_to_test.blocks), 2)
+        self.assertEqual(self.blockchain_to_test.difficulty, 2)
+
 
 if __name__ == '__main__':
     unittest.main()
