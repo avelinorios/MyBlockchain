@@ -67,6 +67,8 @@ class Blockchain:
 
     def _create_new_block(self) -> Block:
         transactions = self.transaction_pool[:3]
+        if transactions is []:
+            raise Exception("There is no transaction in the blockchain.")
         del self.transaction_pool[:3]
         return Block(transactions, self.last_block.hash)
 

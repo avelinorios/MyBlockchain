@@ -45,6 +45,11 @@ class TestBlockchain(unittest.TestCase):
         self.assertEqual(len(self.blockchain_to_test.blocks), 2)
         self.assertEqual(self.blockchain_to_test.difficulty, 2)
 
+    def test_mine_without_transactions(self):
+        del self.blockchain_to_test.transaction_pool[:4]
+        self.assertRaises(Exception, self.blockchain_to_test.mine()
+                          )
+
 
 if __name__ == '__main__':
     unittest.main()
