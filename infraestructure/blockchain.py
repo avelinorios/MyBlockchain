@@ -33,6 +33,9 @@ class Blockchain:
         self._add_block_to_blockchain(block, proof_hash)
         self.difficulty += 1
 
+    def add_transaction(self, transaction):
+        self.transaction_pool.append(transaction)
+
     def _add_block_to_blockchain(self, block, proof_hash):
         """
         Add new mined block to the blockchain if proof is valid
