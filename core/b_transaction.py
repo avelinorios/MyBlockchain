@@ -1,5 +1,6 @@
 import json
 
+
 class Transaction:
     """
     Contains the representation of a money transaction.
@@ -7,6 +8,7 @@ class Transaction:
     :param receiver: the address that receives the money.
     :param amount: the quantity of money.
     """
+
     def __init__(self, sender, receiver, amount):
         self.sender = sender
         self.receiver = receiver
