@@ -1,3 +1,5 @@
+import json
+
 from flask import request, Flask
 
 from infraestructure.blockchain import Blockchain
@@ -15,6 +17,9 @@ def new_transaction():
     blockchain.add_transaction(request_transaction)
     return "Created", 201
 
+@app.route('/get_blockchain', methods=['GET'])
+def get_blockchain():
+    return blockchain.to_json()
 
 if __name__ == '__main__':
     app.run(debug=True, port=9090)

@@ -1,3 +1,5 @@
+import json
+
 from core.b_transaction import Transaction
 from core.block import Block
 
@@ -8,6 +10,10 @@ class Blockchain:
         self.blocks = [self.create_genesis_block()]
         self.transaction_pool = []
         self.difficulty = 1
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                          sort_keys=True, indent=4)
 
     @staticmethod
     def create_genesis_block():
