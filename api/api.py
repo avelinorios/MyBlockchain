@@ -17,9 +17,17 @@ def new_transaction():
     blockchain.add_transaction(request_transaction)
     return "Created", 201
 
+
+@app.route('/mine', methods=['POST'])
+def mine():
+    blockchain.mine()
+    return "Ok", 200
+
+
 @app.route('/get_blockchain', methods=['GET'])
 def get_blockchain():
     return blockchain.to_json()
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=9090)
